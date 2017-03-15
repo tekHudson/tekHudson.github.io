@@ -1,1 +1,0 @@
-# blog.tekkedout.net
