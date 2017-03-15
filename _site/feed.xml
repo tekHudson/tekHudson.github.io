@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tekked Out Reality</title>
-    <description>Greatful Software Developer who&#39;s living the dream, one day at a time.
+    <description>Greatful Software Developer who's living the dream, one day at a time.
 </description>
     <link>http://blog.tekkedout.net/</link>
     <atom:link href="http://blog.tekkedout.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Jun 2016 14:22:56 -0700</pubDate>
-    <lastBuildDate>Thu, 02 Jun 2016 14:22:56 -0700</lastBuildDate>
-    <generator>Jekyll v3.1.3</generator>
+    <pubDate>Wed, 15 Mar 2017 11:14:32 -0700</pubDate>
+    <lastBuildDate>Wed, 15 Mar 2017 11:14:32 -0700</lastBuildDate>
+    <generator>Jekyll v3.4.1</generator>
     
       <item>
         <title>Pretify your Jekyll Twitter Shares</title>
@@ -104,7 +104,7 @@ If not you may need to put code snippets in your corrisponding locations.&lt;/p&
       </item>
     
       <item>
-        <title>Why pay for SSL? Using Let&#39;s Encrypt on a Heroku Rails App</title>
+        <title>Why pay for SSL? Using Let's Encrypt on a Heroku Rails App</title>
         <description>&lt;p&gt;I am a contributor to a non-profit’s Open Source Software (OSS) project called &lt;a href=&quot;https://github.com/on-site/StockAid&quot;&gt;StockAid&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Recently, when faced with handing the project over to the client, we realized our SSL (Secure Sockets Layer) certification had expired.  Luckily I was hanging out with &lt;a href=&quot;https://github.com/smellsblue&quot;&gt;Mike Virta-Stone&lt;/a&gt;.  He let me know about &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;Let’s Encrypt&lt;/a&gt;, a free, automated, and open certificate authority (CA), run for the public’s benefit. Let’s Encrypt is a service provided by the &lt;a href=&quot;https://letsencrypt.org/isrg/&quot;&gt;Internet Security Research Group (ISRG)&lt;/a&gt;.&lt;/p&gt;
@@ -115,13 +115,17 @@ If not you may need to put code snippets in your corrisponding locations.&lt;/p&
   &lt;li&gt;Install letsencrypt using Homebrew:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;brew install letsencrypt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install letsencrypt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;If you are not on a mac feel free to grab the source:&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;git clone https://github.com/letsencrypt/letsencrypt &amp;amp;&amp;amp; cd letsencrypt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/letsencrypt/letsencrypt &amp;amp;&amp;amp; cd letsencrypt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Run the &lt;code class=&quot;highlighter-rouge&quot;&gt;letsencrypt-auto&lt;/code&gt; command everywhere I use &lt;code class=&quot;highlighter-rouge&quot;&gt;letsencrypt&lt;/code&gt;.&lt;/p&gt;
@@ -131,7 +135,9 @@ If not you may need to put code snippets in your corrisponding locations.&lt;/p&
   &lt;li&gt;Run Let’s Encrypt’s certificate creation manually since we aren’t on the server:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;sudo letsencrypt certonly --manual&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo letsencrypt certonly --manual
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -154,12 +160,12 @@ If not you may need to put code snippets in your corrisponding locations.&lt;/p&
 
 &lt;p&gt;Next you’ll see something like this &lt;strong&gt;(Stop do the next step before pressing Enter)&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot; data-lang=&quot;plaintext&quot;&gt;Make sure your web server displays the following content at
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Make sure your web server displays the following content at
 http://blog.tekkedout.net/.well-known/acme-challenge/your_special_key_prefix before continuing:
 
 your_special_key_output
 
-If you don&#39;t have HTTP server configured, you can run the following
+If you don't have HTTP server configured, you can run the following
 command on the target server (as root):
 
 mkdir -p /tmp/letsencrypt/public_html/.well-known/acme-challenge
@@ -168,9 +174,11 @@ printf &quot;%s&quot; your_special_key_output &amp;gt; .well-known/acme-challeng
 # run only once per server:
 $(command -v python2 || command -v python2.7 || command -v python2.6) -c \
 &quot;import BaseHTTPServer, SimpleHTTPServer; \
-s = BaseHTTPServer.HTTPServer((&#39;&#39;, 80), SimpleHTTPServer.SimpleHTTPRequestHandler); \
+s = BaseHTTPServer.HTTPServer(('', 80), SimpleHTTPServer.SimpleHTTPRequestHandler); \
 s.serve_forever()&quot;
-Press ENTER to continue&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+Press ENTER to continue
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;You’ll need to follow the instruction provided accurately or the cert will not be generated.&lt;/p&gt;
@@ -180,30 +188,25 @@ Press ENTER to continue&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
   &lt;li&gt;Create a new controller (or use an existing one) to handle this request:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LetsencryptController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;skip_before_action&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:authenticate_user!&lt;/span&gt;
+&lt;p&gt;``` ruby linenos
+class LetsencryptController &amp;lt; ApplicationController
+  skip_before_action :authenticate_user!&lt;/p&gt;
 
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;authenticate_key&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;text: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;your_special_key_output&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;def authenticate_key
+    render text: “your_special_key_output”
+  end
+end&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&amp;gt; I have devise so I had to add a skip_before_action to stop devise from preventing the page load
 
-&lt;blockquote&gt;
-  &lt;p&gt;I have devise so I had to add a skip_before_action to stop devise from preventing the page load&lt;/p&gt;
-&lt;/blockquote&gt;
+* Add route to the `routes.rb` file for your chosen controller:
 
-&lt;ul&gt;
-  &lt;li&gt;Add route to the &lt;code class=&quot;highlighter-rouge&quot;&gt;routes.rb&lt;/code&gt; file for your chosen controller:&lt;/li&gt;
-&lt;/ul&gt;
+``` ruby
+get &quot;/.well-known/acme-challenge/:id&quot; =&amp;gt; &quot;letsencrypt#authenticate_key&quot;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/.well-known/acme-challenge/:id&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;letsencrypt#authenticate_key&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -223,29 +226,41 @@ Press ENTER to continue&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-plaintext&quot; data-lang=&quot;plaintext&quot;&gt;IMPORTANT NOTES:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at
    /etc/letsencrypt/live/blog.tekkedout.net/fullchain.pem.
    Your cert will expire on 2016-08-17. To obtain a new version of the
-   certificate in the future, simply run Let&#39;s Encrypt again.
- - If you like Let&#39;s Encrypt, please consider supporting our work by:
+   certificate in the future, simply run Let's Encrypt again.
+ - If you like Let's Encrypt, please consider supporting our work by:
 
-   Donating to ISRG / Let&#39;s Encrypt:   https://letsencrypt.org/donate
-   Donating to EFF:                    https://eff.org/donate-le&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Update an existing cert&lt;/strong&gt; - Free Heroku account&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo heroku certs:update \
+     /etc/letsencrypt/live/your_domain_name/fullchain.pem \
+     /etc/letsencrypt/live/your_domain_name/privkey.pem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Upload your first cert&lt;/strong&gt; - Free Heroku account&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;heroku addons:create ssl:endpoint&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;heroku addons:create ssl:endpoint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-terminal&quot; data-lang=&quot;terminal&quot;&gt;sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;highlight terminal
+sudo heroku certs:update \
+     /etc/letsencrypt/live/your_domain_name/fullchain.pem \
+     /etc/letsencrypt/live/your_domain_name/privkey.pem
+&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Paid Heroku accounts&lt;/strong&gt;
