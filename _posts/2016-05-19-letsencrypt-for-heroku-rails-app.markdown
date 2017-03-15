@@ -13,23 +13,23 @@ I was stoked to have found this solution for my client. Now, implimentation. I a
 
 * Install letsencrypt using Homebrew:
 
-``` terminal
+{% highlight terminal %}
 brew install letsencrypt
-```
+{% endhighlight %}
 
 > If you are not on a mac feel free to grab the source:
 
-``` terminal
+{% highlight terminal %}
 git clone https://github.com/letsencrypt/letsencrypt && cd letsencrypt
-```
+{% endhighlight %}
 
 > Run the `letsencrypt-auto` command everywhere I use `letsencrypt`.  
 
 * Run Let's Encrypt's certificate creation manually since we aren't on the server:
 
-``` terminal
+{% highlight terminal %}
 sudo letsencrypt certonly --manual
-```
+{% endhighlight %}
 
 * Enter your email.  
 ![Enter Domain Name]({{ site.url }}/images/letsencryptEmail.png)
@@ -45,7 +45,7 @@ sudo letsencrypt certonly --manual
 
 Next you'll see something like this **(Stop do the next step before pressing Enter)**:
 
-``` plaintext
+{% highlight plaintext %}
 Make sure your web server displays the following content at
 http://blog.tekkedout.net/.well-known/acme-challenge/your_special_key_prefix before continuing:
 
@@ -63,13 +63,13 @@ $(command -v python2 || command -v python2.7 || command -v python2.6) -c \
 s = BaseHTTPServer.HTTPServer(('', 80), SimpleHTTPServer.SimpleHTTPRequestHandler); \
 s.serve_forever()"
 Press ENTER to continue
-```
+{% endhighlight %}
 
 >You'll need to follow the instruction provided accurately or the cert will not be generated.  
 
 * Create a new controller (or use an existing one) to handle this request:
 
-``` ruby linenos
+{% highlight ruby linenos %}
 class LetsencryptController < ApplicationController
   skip_before_action :authenticate_user!
 
@@ -77,17 +77,17 @@ class LetsencryptController < ApplicationController
     render text: "your_special_key_output"
   end
 end
-```
+{% endhighlight %}
 
 > I have devise so I had to add a skip_before_action to stop devise from preventing the page load
 
 * Add route to the `routes.rb` file for your chosen controller:
 
-``` ruby
+{% highlight ruby %}
 get "/.well-known/acme-challenge/:id" => "letsencrypt#authenticate_key"
 
 
-```
+{% endhighlight %}
 
 * Test locally by going to localhost:3000/.well-known/acme-challenge/your_special_key_prefix and ensure your your_special_key_output is rendered.
 
@@ -99,7 +99,7 @@ get "/.well-known/acme-challenge/:id" => "letsencrypt#authenticate_key"
 
 * You should see this:
 
-``` plaintext
+{% highlight plaintext %}
 IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at
    /etc/letsencrypt/live/blog.tekkedout.net/fullchain.pem.
@@ -109,28 +109,28 @@ IMPORTANT NOTES:
 
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le
-```
+{% endhighlight %}
 
 * **Update an existing cert** - Free Heroku account  
 
 
-``` terminal
+{% highlight terminal %}
 sudo heroku certs:update \
      /etc/letsencrypt/live/your_domain_name/fullchain.pem \
      /etc/letsencrypt/live/your_domain_name/privkey.pem
-```
+{% endhighlight %}
   
 * **Upload your first cert** - Free Heroku account  
 
-``` terminal
+{% highlight terminal %}
 heroku addons:create ssl:endpoint
-```
+{% endhighlight %}
 
-``` highlight terminal
+{% highlight terminal %}
 sudo heroku certs:update \
      /etc/letsencrypt/live/your_domain_name/fullchain.pem \
      /etc/letsencrypt/live/your_domain_name/privkey.pem
-```
+{% endhighlight %}
 
 * **Paid Heroku accounts**
   * I recommend checking out Heroku's recent blog post [Announcing Heroku Free SSL Beta and Flexible Dyno Hours](https://blog.heroku.com/archives/2016/5/18/announcing_heroku_free_ssl_beta_and_flexible_dyno_hours)
