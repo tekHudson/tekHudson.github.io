@@ -19,5 +19,5 @@ Basically? It's all about sharing my mind with technology.
 
 {% include icon-twitter.html username=site.twitter_username %}
 {% include icon-github.html username=site.github_username %}
-{% include linkedin-link.html %}
+{% include linkedin-link.html username=site.linkedin_username %}
 
