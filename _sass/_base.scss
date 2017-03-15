@@ -141,6 +141,12 @@ code {
 
     &.language-terminal {
         color: #00FF00;
+        background-color: #272822;
+
+        & span.err {
+            color: #00FF00;
+            background-color: #272822;
+        }
     }
 
     &.language-terminal::before {

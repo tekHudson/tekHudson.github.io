@@ -96,17 +96,13 @@
   <li>Install letsencrypt using Homebrew:</li>
 </ul>
 
-<div class="language-terminal highlighter-rouge"><pre class="highlight"><code>brew install letsencrypt
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-terminal" data-lang="terminal"><span class="err">brew install letsencrypt</span></code></pre></figure>
 
 <blockquote>
   <p>If you are not on a mac feel free to grab the source:</p>
 </blockquote>
 
-<div class="language-terminal highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/letsencrypt/letsencrypt &amp;&amp; cd letsencrypt
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-terminal" data-lang="terminal"><span class="err">git clone https://github.com/letsencrypt/letsencrypt &amp;&amp; cd letsencrypt</span></code></pre></figure>
 
 <blockquote>
   <p>Run the <code class="highlighter-rouge">letsencrypt-auto</code> command everywhere I use <code class="highlighter-rouge">letsencrypt</code>.</p>
@@ -116,9 +112,7 @@
   <li>Run Let’s Encrypt’s certificate creation manually since we aren’t on the server:</li>
 </ul>
 
-<div class="language-terminal highlighter-rouge"><pre class="highlight"><code>sudo letsencrypt certonly --manual
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-terminal" data-lang="terminal"><span class="err">sudo letsencrypt certonly --manual</span></code></pre></figure>
 
 <ul>
   <li>
@@ -141,7 +135,7 @@
 
 <p>Next you’ll see something like this <strong>(Stop do the next step before pressing Enter)</strong>:</p>
 
-<div class="language-plaintext highlighter-rouge"><pre class="highlight"><code>Make sure your web server displays the following content at
+<figure class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">Make sure your web server displays the following content at
 http://blog.tekkedout.net/.well-known/acme-challenge/your_special_key_prefix before continuing:
 
 your_special_key_output
@@ -157,9 +151,7 @@ $(command -v python2 || command -v python2.7 || command -v python2.6) -c \
 "import BaseHTTPServer, SimpleHTTPServer; \
 s = BaseHTTPServer.HTTPServer(('', 80), SimpleHTTPServer.SimpleHTTPRequestHandler); \
 s.serve_forever()"
-Press ENTER to continue
-</code></pre>
-</div>
+Press ENTER to continue</code></pre></figure>
 
 <blockquote>
   <p>You’ll need to follow the instruction provided accurately or the cert will not be generated.</p>
@@ -169,25 +161,30 @@ Press ENTER to continue
   <li>Create a new controller (or use an existing one) to handle this request:</li>
 </ul>
 
-<p>``` ruby linenos
-class LetsencryptController &lt; ApplicationController
-  skip_before_action :authenticate_user!</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">LetsencryptController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">skip_before_action</span> <span class="ss">:authenticate_user!</span>
 
-<p>def authenticate_key
-    render text: “your_special_key_output”
-  end
-end</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
-&gt; I have devise so I had to add a skip_before_action to stop devise from preventing the page load
+  <span class="k">def</span> <span class="nf">authenticate_key</span>
+    <span class="n">render</span> <span class="ss">text: </span><span class="s2">"your_special_key_output"</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
-* Add route to the `routes.rb` file for your chosen controller:
+<blockquote>
+  <p>I have devise so I had to add a skip_before_action to stop devise from preventing the page load</p>
+</blockquote>
 
-``` ruby
-get "/.well-known/acme-challenge/:id" =&gt; "letsencrypt#authenticate_key"
+<ul>
+  <li>Add route to the <code class="highlighter-rouge">routes.rb</code> file for your chosen controller:</li>
+</ul>
 
-
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get</span> <span class="s2">"/.well-known/acme-challenge/:id"</span> <span class="o">=&gt;</span> <span class="s2">"letsencrypt#authenticate_key"</span></code></pre></figure>
 
 <ul>
   <li>
@@ -207,7 +204,7 @@ get "/.well-known/acme-challenge/:id" =&gt; "letsencrypt#authenticate_key"
   </li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><pre class="highlight"><code>IMPORTANT NOTES:
+<figure class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at
    /etc/letsencrypt/live/blog.tekkedout.net/fullchain.pem.
    Your cert will expire on 2016-08-17. To obtain a new version of the
@@ -215,33 +212,21 @@ get "/.well-known/acme-challenge/:id" =&gt; "letsencrypt#authenticate_key"
  - If you like Let's Encrypt, please consider supporting our work by:
 
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-   Donating to EFF:                    https://eff.org/donate-le
-</code></pre>
-</div>
+   Donating to EFF:                    https://eff.org/donate-le</code></pre></figure>
 
 <ul>
   <li><strong>Update an existing cert</strong> - Free Heroku account</li>
 </ul>
 
-<div class="language-terminal highlighter-rouge"><pre class="highlight"><code>sudo heroku certs:update \
-     /etc/letsencrypt/live/your_domain_name/fullchain.pem \
-     /etc/letsencrypt/live/your_domain_name/privkey.pem
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-terminal" data-lang="terminal"><span class="err">sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem</span></code></pre></figure>
 
 <ul>
   <li><strong>Upload your first cert</strong> - Free Heroku account</li>
 </ul>
 
-<div class="language-terminal highlighter-rouge"><pre class="highlight"><code>heroku addons:create ssl:endpoint
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-terminal" data-lang="terminal"><span class="err">heroku addons:create ssl:endpoint</span></code></pre></figure>
 
-<p><code class="highlighter-rouge">highlight terminal
-sudo heroku certs:update \
-     /etc/letsencrypt/live/your_domain_name/fullchain.pem \
-     /etc/letsencrypt/live/your_domain_name/privkey.pem
-</code></p>
+<figure class="highlight"><pre><code class="language-terminal" data-lang="terminal"><span class="err">sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem</span></code></pre></figure>
 
 <ul>
   <li><strong>Paid Heroku accounts</strong>

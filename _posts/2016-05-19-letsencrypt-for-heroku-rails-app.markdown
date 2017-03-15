@@ -115,9 +115,7 @@ IMPORTANT NOTES:
 
 
 {% highlight terminal %}
-sudo heroku certs:update \
-     /etc/letsencrypt/live/your_domain_name/fullchain.pem \
-     /etc/letsencrypt/live/your_domain_name/privkey.pem
+sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem
 {% endhighlight %}
   
 * **Upload your first cert** - Free Heroku account  
@@ -127,9 +125,7 @@ heroku addons:create ssl:endpoint
 {% endhighlight %}
 
 {% highlight terminal %}
-sudo heroku certs:update \
-     /etc/letsencrypt/live/your_domain_name/fullchain.pem \
-     /etc/letsencrypt/live/your_domain_name/privkey.pem
+sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem
 {% endhighlight %}
 
 * **Paid Heroku accounts**

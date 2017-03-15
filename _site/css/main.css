@@ -36,7 +36,8 @@ pre, code { color: #F92672; font-size: 15px; border: 1px solid #e8e8e8; border-r
 
 code { padding: 1px 5px; }
 code.language-plaintext { color: #FFFFFF; }
-code.language-terminal { color: #00FF00; }
+code.language-terminal { color: #00FF00; background-color: #272822; }
+code.language-terminal span.err { color: #00FF00; background-color: #272822; }
 code.language-terminal::before { content: "$ "; color: #00FF00; }
 
 pre { padding: 8px 12px; overflow-x: auto; }
