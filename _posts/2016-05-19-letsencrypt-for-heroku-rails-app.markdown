@@ -170,13 +170,17 @@ heroku addons:create ssl:endpoint
 {% endhighlight %}
 
 {% highlight terminal %}
-sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem
+sudo heroku certs:update \
+/etc/letsencrypt/live/your_domain_name/fullchain.pem \
+/etc/letsencrypt/live/your_domain_name/privkey.pem
 {% endhighlight %}
 
 **Update an existing certificate**
 
 {% highlight terminal %}
-sudo heroku certs:update /etc/letsencrypt/live/your_domain_name/fullchain.pem /etc/letsencrypt/live/your_domain_name/privkey.pem
+sudo heroku certs:update \
+/etc/letsencrypt/live/your_domain_name/fullchain.pem \
+/etc/letsencrypt/live/your_domain_name/privkey.pem
 {% endhighlight %}
 
 
