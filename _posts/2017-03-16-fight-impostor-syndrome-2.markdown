@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  My fight with Impostor Syndrome (part 2)
-description: My continuing battle with imposter syndrome, part 2.
+description: My continuing battle with impostor syndrome, part 2.
 date:   2017-03-17 12:50:00 -0700
-categories: fight impostor syndrome part 2
+categories: fight impostor syndrome
 ---
 
 It's been 10 months. What's changed you ask? Nothing and everything.
